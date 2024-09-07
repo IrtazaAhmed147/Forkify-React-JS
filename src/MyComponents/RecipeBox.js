@@ -20,7 +20,7 @@ const RecipeBox = () => {
       </div>
 
       <div className="recipe-ingredients">
-        <h2 class="heading--2">Recipe ingredients</h2>
+        <h2 className="heading--2">Recipe ingredients</h2>
 
 
 

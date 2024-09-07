@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Navbar.css'
 import logo from './img/logo.09084f39.png'
 
-const Navbar = () => {
+const Navbar = ({ onFormSubmit }) => {
+    const [inputValue, setInputValue] = useState('');
+
+    const handleChange = (e) => {
+        setInputValue(e.target.value);
+      };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Pass the value to the parent component when the button is clicked
+        // onButtonClick(inputValue);
+        onFormSubmit(inputValue)
+    };
+
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#f9f5f3', height: '100px' }}>
@@ -15,9 +27,10 @@ const Navbar = () => {
                     </button>
                     <ul className="navbar-nav mb-2 mb-lg-0">
 
-                        <form className="d-flex search">
-                            <input className="form-control me-2 search-field" type="search" placeholder="Search over 1,000,000 recipies..." aria-label="Search" />
-                            <button className="btn btn-outline-success search-btn" type="submit">Search</button>
+                        <form className="d-flex search" onSubmit={handleSubmit}>
+                            <input className="form-control me-2 search-field" value={inputValue} onChange={handleChange}
+                                type="search" placeholder="Search over 1,000,000 recipies..." aria-label="Search" />
+                            <button className="btn btn-outline-success search-btn"  type="submit">Search</button>
                         </form>
                     </ul>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">

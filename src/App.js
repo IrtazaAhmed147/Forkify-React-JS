@@ -9,13 +9,17 @@ function App() {
 
   const [recipe, setRecipe] = useState([])
   const [totalResults, setTotalResults] = useState(0)
+  const [childInputValue, setChildInputValue] = useState('');
+
+  const [currentPageNum, setCurrentPageNum] = useState(1)
+  // const currentPageNum = 1
 
 
 
 
   const recipeData = async () => {
 
-    const url = 'https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza'
+    const url = `https://forkify-api.herokuapp.com/api/v2/recipes?search=${childInputValue}`
     let response = await fetch(url)
     let data = await response.json()
     let parsedData = data.data
@@ -38,27 +42,28 @@ function App() {
     recipeData()
 
 
-  }, [])
+  }, [childInputValue])
+
+
+  const handleChildInputSubmit = (value) => {
+    setCurrentPageNum(1)
+    setChildInputValue(value);
+    console.log(value)
+    // recipeData()
+
+  };
 
 
   return (
 
 
-
-
-
-
     <div className="container main-box" >
-
-      <Navbar />
-
+      <Navbar onFormSubmit={handleChildInputSubmit} />
       <div className="d-flex gap-1">
 
 
         <div className="recipeListPortion">
-
-          <RecipeList recipes={recipe} totalResults={totalResults} />
-
+          <RecipeList currentPage={currentPageNum} recipes={recipe} totalResults={totalResults} />
         </div>
 
         <div className="recipeBoxPortion">
