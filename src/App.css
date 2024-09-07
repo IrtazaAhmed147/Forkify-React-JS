@@ -50,7 +50,15 @@
   padding: 0px !important;
 }
 
-.recipePortion {
+.recipeListPortion {
   max-width: 75rem;
+  /* border: 2px solid black; */
   display: flex;
+}
+
+.recipeBoxPortion{
+  width: 800px;
+  /* border: 2px solid black; */
+  height: 1070px;
+  background-color: #f9f5f3;
 }

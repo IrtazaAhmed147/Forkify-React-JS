@@ -1,7 +1,11 @@
 import React from 'react'
 import './RecipeList.css'
 
-const Item = () => {
+const Item = (props) => {
+
+    let {title, publisher, image_url, id} = props
+
+
     return (
         <div>
 
@@ -12,10 +16,10 @@ const Item = () => {
                     <div className="card " style={{ flexDirection: 'row', alignItems: 'center' }}>
 
 
-                        <img className='item-img' style={{ height: '50px' }} src="https://forkify-api.herokuapp.com/images/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg" alt="" />
+                        <img className='item-img' style={{ height: '50px' }} src={props.image_url} alt="" />
                         <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">With supporting text below as a </p>
+                            <h5 className="card-title">{props.title}</h5>
+                            <p className="card-text">{props.publisher}</p>
 
                         </div>
                     </div>
