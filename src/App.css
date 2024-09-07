@@ -32,7 +32,25 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.main-box {
+  max-width: 75rem;
+  min-height: 117rem;
+  margin: 4vw auto;
+  background-color: #fff;
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 2rem 6rem .5rem rgba(97, 85, 81, .2);
+  padding: 0px !important;
+}
+
+.recipePortion {
+  max-width: 75rem;
+  display: flex;
 }

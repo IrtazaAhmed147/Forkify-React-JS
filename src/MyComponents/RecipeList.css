@@ -1,0 +1,42 @@
+.list-box {
+    width: 400px;
+}
+
+.result a {
+    text-decoration: none;
+}
+
+.item-img {
+    height: 60px !important;
+    border-radius: 50%;
+    width: 60px;
+}
+
+.card-text {
+
+    font-size: 0.9rem;
+    color: #918581;
+}
+
+.card-title {
+    text-transform: uppercase;
+  
+    font-size: 15px;
+    color: #f38e82;
+    
+}
+
+.result {
+    background-color: #f9f5f3 !important;
+
+}
+
+.result:hover {
+    background-color: #f9f5f3;
+}
+
+.card {
+    background: transparent !important;
+    padding: 0px 20px;
+    border: none;
+}
