@@ -1,9 +1,9 @@
 import React from 'react'
-import './RecipeList.css'
+import './RecipeList'
 
 const Item = (props) => {
 
-    let {title, publisher, image_url, id} = props
+    let { title, publisher, image_url, id } = props
 
 
     return (
@@ -13,7 +13,7 @@ const Item = (props) => {
 
             <div className="result ">
                 <a href="">
-                    <div className="card " style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <div className="card " style={{ flexDirection: 'row', alignItems: 'center', height: '100px' }}>
 
 
                         <img className='item-img' style={{ height: '50px' }} src={props.image_url} alt="" />

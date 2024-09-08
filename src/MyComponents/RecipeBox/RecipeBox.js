@@ -42,7 +42,11 @@ const RecipeBox = () => {
 
       </div>
 
-      <div className="recipe-directions"></div>
+      <div className="recipe-directions">
+        <h3>How to cook it</h3>
+        <p>This recipe was carefully designed and tested by Closet Cooking. Please check out directions at their website.</p>
+        <button className='btn btn-dark'>Direction &rarr;</button>
+      </div>
 
     </>
   )

@@ -41,7 +41,7 @@
 
 .main-box {
   max-width: 75rem;
-  min-height: 117rem;
+  /* min-height: 93rem; */
   margin: 4vw auto;
   background-color: #fff;
   border-radius: 9px;
@@ -53,12 +53,15 @@
 .recipeListPortion {
   max-width: 75rem;
   /* border: 2px solid black; */
-  display: flex;
+  /* display: flex; */
+  width: 400px;
+  
+  position: relative;
 }
 
 .recipeBoxPortion{
   width: 800px;
   /* border: 2px solid black; */
-  height: 1070px;
+  /* height: 1300px; */
   background-color: #f9f5f3;
 }

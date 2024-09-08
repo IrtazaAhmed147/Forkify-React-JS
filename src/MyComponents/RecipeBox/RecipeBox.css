@@ -86,3 +86,14 @@ flex-wrap: wrap;
 font-size: 17px;
 gap: 25px;
 }
+
+
+.recipe-directions{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 8rem;
+    text-align: center;
+}
