@@ -38,10 +38,17 @@
   }
 }
 
+.recipeBoxPortion{
+  width: 800px;
+  /* border: 2px solid black; */
+  height: 1300px;
+  background-color: #f9f5f3;
+  position: relative;
+}
 
 .main-box {
   max-width: 75rem;
-  /* min-height: 93rem; */
+  min-height: 73rem;
   margin: 4vw auto;
   background-color: #fff;
   border-radius: 9px;
@@ -59,9 +66,3 @@
   position: relative;
 }
 
-.recipeBoxPortion{
-  width: 800px;
-  /* border: 2px solid black; */
-  /* height: 1300px; */
-  background-color: #f9f5f3;
-}

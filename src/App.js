@@ -6,16 +6,28 @@ import RecipeList from './MyComponents/RecipeListBox/RecipeList';
 import React, { useState, useEffect } from "react";
 import Spinner from "./MyComponents/Spinner/Spinner";
 
+
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   useParams
+// } from "react-router-dom";
+
+
 function App() {
 
   const [recipe, setRecipe] = useState([])
   const [totalResults, setTotalResults] = useState(0)
   const [childInputValue, setChildInputValue] = useState('');
   const [loading, setLoading] = useState(true)
-
   const [currentPageNum, setCurrentPageNum] = useState(1)
 
-  const recipesPerPage = 10;
+  const [specificRecipe, setSpecificRecipe] = useState([])
+  const [specificRecipeKey, setSpecificRecipeKey] = useState(" ")
+  const [loader, setLoader] = useState(true)
+
+  // const navigate = useNavigate();
 
 
 
@@ -33,7 +45,7 @@ function App() {
     setTotalResults(data.results)
     setLoading(false)
 
-    console.log(parsedData.recipes)
+    // console.log(parsedData.recipes)
 
 
   }
@@ -49,49 +61,50 @@ function App() {
 
 
 
-
-
-
-
-
-
-  const handleNextBtn = () => {
-
-    if (currentPageNum * recipesPerPage < totalResults) {
-      setCurrentPageNum(currentPageNum + 1)
-    }
-
-
-  }
-
-  const handlePrevBtn = () => {
-    if (currentPageNum > 1) {
-      setCurrentPageNum(currentPageNum - 1)
-    }
-  }
-
-
-
-  const startIndex = (currentPageNum - 1) * recipesPerPage
-  const endIndex = startIndex + recipesPerPage
-  const currentRecipe = recipe.slice(startIndex, endIndex)
-
-
   const handleChildInputSubmit = (value) => {
-    setCurrentPageNum(1)
     setChildInputValue(value);
     console.log(value)
   };
 
 
 
+  const specificRecipeData = async (specificRecipeKey) => {
+
+    setLoader(true);
+    const SpecificRecipeUrl = `https://forkify-api.herokuapp.com/api/v2/recipes/${specificRecipeKey}`
+    let response1 = await fetch(SpecificRecipeUrl)
+    let data1 = await response1.json()
+    let parsedData1 = data1.data
+
+    // setSpecificRecipe(parsedData1.recipe)
+    // console.log(specificRecipe)
+    if (parsedData1 && parsedData1.recipe) {
+      setSpecificRecipe(parsedData1.recipe);
+  } else {
+      console.error('Recipe not found or data is undefined');
+      setSpecificRecipe([]); // Optional: Set an empty array or a default state if no recipe is found
+  }
+  setLoader(false);
+
+  }
 
 
 
 
 
+  const handleRecipeClick = (id) => {
 
+    setSpecificRecipeKey(id)
+    
+      
+    
 
+  }
+  useEffect(() => {
+    if (specificRecipeKey !== " ") {
+        specificRecipeData(specificRecipeKey);  // Fetch recipe data when key changes
+    }
+}, [specificRecipeKey]); 
 
 
 
@@ -100,44 +113,45 @@ function App() {
 
 
   return (
+    <div>
+      {/* <Router> */}
+
+        <div className="container main-box" >
+
+          <Navbar onFormSubmit={handleChildInputSubmit} />
 
 
-    <div className="container main-box" >
-
-      <Navbar onFormSubmit={handleChildInputSubmit} />
-    
-
-      <div className="d-flex gap-1">
+          <div className="d-flex gap-1">
 
 
-        <div className="recipeListPortion">
+            <div className="recipeListPortion">
 
-          {!loading && <RecipeList currentRecipe={currentRecipe} />}
-          {loading && <Spinner />}
+              {!loading && <RecipeList onClickKey={handleRecipeClick} currentPageNum={currentPageNum} recipes={recipe} totalResults={totalResults} />}
+              {loading && <Spinner />}
 
-          {!loading && <div className="btn-box mt-3" style={{ display: 'flex', justifyContent: 'space-between' }}>
-            {currentPageNum > 1 && (
-              <button className='btn btn-dark prev-btn' onClick={handlePrevBtn}>previous</button>
-            )}
-            {currentPageNum * recipesPerPage < totalResults && (
-              <button style={{ marginLeft: 'auto' }} className='btn btn-dark' onClick={handleNextBtn}>Next</button>
-            )}
-          </div>}
 
+            </div>
+
+
+
+            {/* <Routes>
+              <Route exact path={specificRecipeKey}  element={}></Route>
+            </Routes> */}
+              <div className='recipeBoxPortion'>
+
+            {!loader && <RecipeBox specificRecipe={specificRecipe}/>}
+            {loader && <Spinner />}
+
+              </div>
+
+
+
+
+          </div>
         </div>
 
-
-
-
-        <div className="recipeBoxPortion">
-          <RecipeBox />
-        </div>
-
-
-
-      </div>
+      {/* </Router> */}
     </div>
-
   );
 }
 

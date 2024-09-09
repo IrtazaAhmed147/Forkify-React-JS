@@ -1,20 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './RecipeBox.css'
 
-const RecipeBox = () => {
+import { useParams } from 'react-router-dom';
+
+
+const RecipeBox = (props) => {
+
+
+
+  const specificRecipe = props.specificRecipe || {}; // Ensure specificRecipe is an object
+  const specificIngredients = specificRecipe.ingredients || []; // Ensure ingredients is an array
+
+
+  
+
+  
+
+
+
   return (
 
-    <>
+    
+<>
+      
 
-      <div className='specific-img'>
-        <img src="https://forkify-api.herokuapp.com/images/9525555410.jpg" alt="" />
-        <h1 className='recipe-title'><span>Jamaican Burgers</span></h1>
-      </div>
+        
+
+      <figure className='specific-img'>
+        <img src={specificRecipe.image_url} alt="" />
+        <h1 className='recipe-title'><span>{specificRecipe.title}</span></h1>
+      </figure>
 
       <div className="recipe-details d-flex">
         <ul>
-          <li>60 Minutes</li>
-          <li>4 Servings</li>
+          <li>{specificRecipe.cooking_time} Minutes</li>
+          <li>{specificRecipe.servings} Servings</li>
         </ul>
         <button className="bookmark-icon"></button>
       </div>
@@ -26,29 +46,29 @@ const RecipeBox = () => {
 
 
         <ul className='recipe-ingredients-list'>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-          <li className='ingredients-name'>2 tbsps olive oil</li>
-        </ul>
+          {specificIngredients.map((element, index) => {
+            return <div key={index}>
+            <li className='ingredients-name'>{element.quantity} {element.unit} {element.description}</li>
+              </div>
+          })}
 
-      </div>
 
-      <div className="recipe-directions">
-        <h3>How to cook it</h3>
-        <p>This recipe was carefully designed and tested by Closet Cooking. Please check out directions at their website.</p>
-        <button className='btn btn-dark'>Direction &rarr;</button>
-      </div>
+         
 
-    </>
+    </ul >
+
+      </div >
+
+  <div className="recipe-directions">
+    <h3>How to cook it</h3>
+    <p>This recipe was carefully designed and tested by Closet Cooking. Please check out directions at their website.</p>
+    <a target='blank' href={specificRecipe.source_url}>
+    <button className='btn btn-dark'>Direction &rarr;</button>
+    </a>
+  </div>
+
+    
+  </>
   )
 }
 
