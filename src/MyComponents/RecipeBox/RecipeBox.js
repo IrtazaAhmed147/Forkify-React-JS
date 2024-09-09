@@ -36,7 +36,7 @@ const RecipeBox = (props) => {
           <li>{specificRecipe.cooking_time} Minutes</li>
           <li>{specificRecipe.servings} Servings</li>
         </ul>
-        <button className="bookmark-icon"></button>
+        <button className="bookmark-icon"><i className="fa-solid fa-bookmark"></i></button>
       </div>
 
       <div className="recipe-ingredients">
@@ -47,9 +47,8 @@ const RecipeBox = (props) => {
 
         <ul className='recipe-ingredients-list'>
           {specificIngredients.map((element, index) => {
-            return <div key={index}>
-            <li className='ingredients-name'>{element.quantity} {element.unit} {element.description}</li>
-              </div>
+            return <li key={index} className='ingredients-name' style={{display: 'flex'}}>{element.quantity} {element.unit} {element.description}
+              </li>
           })}
 
 

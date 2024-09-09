@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import './Navbar.css'
 import logo from '../img/logo.09084f39.png'
+import { Link } from "react-router-dom";
 
 const Navbar = ({ onFormSubmit }) => {
     const [inputValue, setInputValue] = useState('');
@@ -19,9 +20,9 @@ const Navbar = ({ onFormSubmit }) => {
         <>
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#f9f5f3', height: '100px' }}>
                 <div className="container-fluid" style={{ width: '95%' }}>
-                    <a className="navbar-brand" href="/">
+                    <Link className="navbar-brand" to="/">
                         <img className='logo' src={logo} alt="" />
-                    </a>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

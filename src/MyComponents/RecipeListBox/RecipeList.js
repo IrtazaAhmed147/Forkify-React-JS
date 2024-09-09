@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './RecipeList.css'
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 // import Item from './Item'
@@ -65,7 +65,7 @@ const RecipeList = (props) => {
                         {/* <Item title={element.title ? element.title : ""} publisher={element.publisher ? element.publisher : ""} image_url={element.image_url} id={element.id} /> */}
 
                         <div className="result "    >
-                            {/* <a href={`${element.id}`}> */}
+                            <Link to={`${element.id}`}>
 
 
                             <div className="card" onClick={() => getKey(element.id)} style={{ flexDirection: 'row', alignItems: 'center', height: '100px' }}>
@@ -77,7 +77,7 @@ const RecipeList = (props) => {
                                 </div>
                             </div>
 
-                            {/* </a> */}
+                            </Link>
                         </div>
 
                     </div>

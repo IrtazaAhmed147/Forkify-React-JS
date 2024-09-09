@@ -5,14 +5,15 @@ import RecipeBox from './MyComponents/RecipeBox/RecipeBox';
 import RecipeList from './MyComponents/RecipeListBox/RecipeList';
 import React, { useState, useEffect } from "react";
 import Spinner from "./MyComponents/Spinner/Spinner";
+import HomeBox from './MyComponents/HomeBox/HomeBox';
 
 
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   useParams
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams
+} from "react-router-dom";
 
 
 function App() {
@@ -27,7 +28,6 @@ function App() {
   const [specificRecipeKey, setSpecificRecipeKey] = useState(" ")
   const [loader, setLoader] = useState(true)
 
-  // const navigate = useNavigate();
 
 
 
@@ -45,7 +45,6 @@ function App() {
     setTotalResults(data.results)
     setLoading(false)
 
-    // console.log(parsedData.recipes)
 
 
   }
@@ -76,13 +75,12 @@ function App() {
     let data1 = await response1.json()
     let parsedData1 = data1.data
 
-    // setSpecificRecipe(parsedData1.recipe)
-    // console.log(specificRecipe)
+   
     if (parsedData1 && parsedData1.recipe) {
       setSpecificRecipe(parsedData1.recipe);
   } else {
       console.error('Recipe not found or data is undefined');
-      setSpecificRecipe([]); // Optional: Set an empty array or a default state if no recipe is found
+      setSpecificRecipe([]); 
   }
   setLoader(false);
 
@@ -102,7 +100,7 @@ function App() {
   }
   useEffect(() => {
     if (specificRecipeKey !== " ") {
-        specificRecipeData(specificRecipeKey);  // Fetch recipe data when key changes
+        specificRecipeData(specificRecipeKey);  
     }
 }, [specificRecipeKey]); 
 
@@ -114,7 +112,7 @@ function App() {
 
   return (
     <div>
-      {/* <Router> */}
+      <Router>
 
         <div className="container main-box" >
 
@@ -134,13 +132,15 @@ function App() {
 
 
 
-            {/* <Routes>
-              <Route exact path={specificRecipeKey}  element={}></Route>
-            </Routes> */}
               <div className='recipeBoxPortion'>
+            <Routes>
 
-            {!loader && <RecipeBox specificRecipe={specificRecipe}/>}
-            {loader && <Spinner />}
+              <Route exact path="/"  element={<HomeBox/>}></Route>
+              <Route exact path="/:specificRecipeKey"  element={<RecipeBox specificRecipe={specificRecipe}/>}></Route>
+            </Routes>
+
+            {/* {!loader && }
+            {loader && <Spinner />} */}
 
               </div>
 
@@ -150,7 +150,7 @@ function App() {
           </div>
         </div>
 
-      {/* </Router> */}
+      </Router>
     </div>
   );
 }
