@@ -42,12 +42,10 @@
     /* padding: 6px 20px; */
     width: 100px;
     height: 35px;
-    background: orange;
+    background: #f9f5f3;
     border: none;
-    color: #fff;
-    transition-duration: 0.5s;
+    color: #f38e82;
 }
 .NextPrevBtn:hover{
-    color: #fff;
-    transform: scale(1.05);
+    background: #f7f1ef;
 }
