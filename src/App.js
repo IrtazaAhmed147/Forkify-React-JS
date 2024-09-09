@@ -50,7 +50,7 @@ function App() {
   }
 
   useEffect(() => {
-    document.title = `Forkify`
+    document.title = `Forkify ${childInputValue}`
 
     recipeData()
 
@@ -75,14 +75,14 @@ function App() {
     let data1 = await response1.json()
     let parsedData1 = data1.data
 
-   
+
     if (parsedData1 && parsedData1.recipe) {
       setSpecificRecipe(parsedData1.recipe);
-  } else {
+    } else {
       console.error('Recipe not found or data is undefined');
-      setSpecificRecipe([]); 
-  }
-  setLoader(false);
+      setSpecificRecipe([]);
+    }
+    setLoader(false);
 
   }
 
@@ -93,17 +93,23 @@ function App() {
   const handleRecipeClick = (id) => {
 
     setSpecificRecipeKey(id)
-    
-      
-    
+
+
+
 
   }
   useEffect(() => {
     if (specificRecipeKey !== " ") {
-        specificRecipeData(specificRecipeKey);  
+      specificRecipeData(specificRecipeKey);
     }
-}, [specificRecipeKey]); 
+  }, [specificRecipeKey]);
 
+
+
+  const clearRecipeList = () => {
+    setRecipe([]); // Clear the recipe list
+    setChildInputValue(''); // Clear the search input value if needed
+  };
 
 
 
@@ -116,7 +122,7 @@ function App() {
 
         <div className="container main-box" >
 
-          <Navbar onFormSubmit={handleChildInputSubmit} />
+          <Navbar onFormSubmit={handleChildInputSubmit} onLogoClick={clearRecipeList} />
 
 
           <div className="d-flex gap-1">
@@ -132,17 +138,16 @@ function App() {
 
 
 
-              <div className='recipeBoxPortion'>
-            <Routes>
+            <div className='recipeBoxPortion'>
+              <Routes>
 
-              <Route exact path="/"  element={<HomeBox/>}></Route>
-              <Route exact path="/:specificRecipeKey"  element={<RecipeBox specificRecipe={specificRecipe}/>}></Route>
-            </Routes>
+                <Route exact path="/" element={<HomeBox />} ></Route>
+                <Route exact path="/:specificRecipeKey" element={<RecipeBox specificRecipe={specificRecipe} />}></Route>
 
-            {/* {!loader && }
-            {loader && <Spinner />} */}
+              </Routes>
 
-              </div>
+
+            </div>
 
 
 

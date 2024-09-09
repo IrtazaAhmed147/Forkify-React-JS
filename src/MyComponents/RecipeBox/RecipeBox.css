@@ -1,15 +1,17 @@
-.specific-img{
+.specific-img {
     height: 20rem;
     position: relative;
     transform-origin: top;
 }
-.specific-img img{
+
+.specific-img img {
     display: block;
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
-.recipe-title{
+
+.recipe-title {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -23,20 +25,22 @@
     text-align: center;
 
 }
-.recipe-title span{
+
+.recipe-title span {
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     padding: 1.3rem 2rem;
     background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
 }
 
-.recipe-details{
+.recipe-details {
     height: 155px;
     justify-content: space-between;
     align-items: center;
     padding: 0px 30px;
 }
-.recipe-details ul{
+
+.recipe-details ul {
     display: flex;
     list-style: none;
     gap: 20px;
@@ -44,7 +48,7 @@
 
 
 
-.bookmark-icon{
+.bookmark-icon {
     background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
     border-radius: 50%;
     border: none;
@@ -58,7 +62,8 @@
     color: #fff;
     font-size: 2rem;
 }
-.heading--2{
+
+.heading--2 {
     font-size: 1.3rem;
     font-weight: 700;
     color: #f38e82;
@@ -67,7 +72,7 @@
     text-align: center;
 }
 
-.recipe-ingredients{
+.recipe-ingredients {
     background-color: #f2efee;
     padding: 2rem 2rem;
     font-size: 1rem;
@@ -78,16 +83,16 @@
     align-items: center;
 }
 
-.recipe-ingredients-list{
-   
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 1.5rem 2rem;
-list-style: none;
+.recipe-ingredients-list {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+    list-style: none;
 }
 
 
-.recipe-directions{
+.recipe-directions {
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -97,3 +102,8 @@ list-style: none;
     text-align: center;
 }
 
+.Home-p {
+    text-align: center;
+    margin-top: 3rem;
+
+}

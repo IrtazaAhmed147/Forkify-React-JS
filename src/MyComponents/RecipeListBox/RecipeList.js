@@ -3,7 +3,6 @@ import './RecipeList.css'
 import { Link } from "react-router-dom";
 
 
-// import Item from './Item'
 
 
 
@@ -44,7 +43,7 @@ const RecipeList = (props) => {
 
 
     const getKey = (id) => {
-        
+
         console.log(id)
         props.onClickKey(id)
     }
@@ -62,20 +61,19 @@ const RecipeList = (props) => {
 
 
 
-                        {/* <Item title={element.title ? element.title : ""} publisher={element.publisher ? element.publisher : ""} image_url={element.image_url} id={element.id} /> */}
 
                         <div className="result "    >
                             <Link to={`${element.id}`}>
 
 
-                            <div className="card" onClick={() => getKey(element.id)} style={{ flexDirection: 'row', alignItems: 'center', height: '100px' }}>
-                                <img className='item-img' style={{ height: '50px' }} src={element.image_url} alt="" />
-                                <div className="card-body">
-                                    <h5 className="card-title">{element.title ? element.title : ""}</h5>
-                                    <p className="card-text">{element.publisher ? element.publisher : ""}</p>
+                                <div className="card" onClick={() => getKey(element.id)} style={{ flexDirection: 'row', alignItems: 'center', height: '100px' }}>
+                                    <img className='item-img' style={{ height: '50px' }} src={element.image_url} alt="" />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{element.title ? element.title : ""}</h5>
+                                        <p className="card-text">{element.publisher ? element.publisher : ""}</p>
 
+                                    </div>
                                 </div>
-                            </div>
 
                             </Link>
                         </div>
@@ -94,15 +92,15 @@ const RecipeList = (props) => {
 
 
 
-                <div className="btn-box mt-3" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div className="btn-box mt-3 mx-3" style={{ display: 'flex', justifyContent: 'space-between' }}>
 
                     {currentPage > 1 && (
 
-                        <button className='btn btn-dark prev-btn' onClick={handlePrevBtn}>previous</button>
+                        <button className='prevbtn NextPrevBtn' onClick={handlePrevBtn}>&larr; Previous</button>
                     )}
 
                     {currentPage * recipesPerPage < props.totalResults && (
-                        <button style={{ marginLeft: 'auto' }} className='btn btn-dark' onClick={handleNextBtn}>Next</button>
+                        <button style={{ marginLeft: 'auto' }} className='nextBtn NextPrevBtn' onClick={handleNextBtn}>Next &rarr;</button>
 
                     )}
                 </div>

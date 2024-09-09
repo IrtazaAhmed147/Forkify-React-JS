@@ -1,30 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './RecipeBox.css'
 
-import { useParams } from 'react-router-dom';
 
 
 const RecipeBox = (props) => {
-
-
 
   const specificRecipe = props.specificRecipe || {}; // Ensure specificRecipe is an object
   const specificIngredients = specificRecipe.ingredients || []; // Ensure ingredients is an array
 
 
-  
-
-  
-
 
 
   return (
 
-    
-<>
-      
 
-        
+    <>
+
+
+
 
       <figure className='specific-img'>
         <img src={specificRecipe.image_url} alt="" />
@@ -47,27 +40,28 @@ const RecipeBox = (props) => {
 
         <ul className='recipe-ingredients-list'>
           {specificIngredients.map((element, index) => {
-            return <li key={index} className='ingredients-name' style={{display: 'flex'}}>{element.quantity} {element.unit} {element.description}
-              </li>
+            return <li key={index} className='ingredients-name' style={{ display: 'flex' }}>{element.quantity} {element.unit} {element.description}
+            </li>
           })}
 
 
-         
 
-    </ul >
+
+        </ul >
 
       </div >
 
-  <div className="recipe-directions">
-    <h3>How to cook it</h3>
-    <p>This recipe was carefully designed and tested by Closet Cooking. Please check out directions at their website.</p>
-    <a target='blank' href={specificRecipe.source_url}>
-    <button className='btn btn-dark'>Direction &rarr;</button>
-    </a>
-  </div>
+      <div className="recipe-directions">
+        <h3>How to cook it</h3>
 
-    
-  </>
+        <p>This recipe was carefully designed and tested by <b> {specificRecipe.publisher} </b>. Please check out directions at their website.</p>
+        <a target='blank' href={specificRecipe.source_url}>
+          <button className='btn btn-dark'>Direction &rarr;</button>
+        </a>
+      </div>
+
+
+    </>
   )
 }
 

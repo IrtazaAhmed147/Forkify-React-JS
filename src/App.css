@@ -38,10 +38,10 @@
   }
 }
 
-.recipeBoxPortion{
+.recipeBoxPortion {
   width: 800px;
   /* border: 2px solid black; */
-  height: 1300px;
+  min-height: 1300px;
   background-color: #f9f5f3;
   position: relative;
 }
@@ -62,7 +62,6 @@
   /* border: 2px solid black; */
   /* display: flex; */
   width: 400px;
-  
+
   position: relative;
 }
-
