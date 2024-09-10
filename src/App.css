@@ -41,7 +41,7 @@
 .recipeBoxPortion {
   width: 800px;
   /* border: 2px solid black; */
-  min-height: 1300px;
+  min-height: 1100px;
   background-color: #f9f5f3;
   position: relative;
 }
@@ -59,9 +59,9 @@
 
 .recipeListPortion {
   max-width: 75rem;
-  /* border: 2px solid black; */
-  /* display: flex; */
   width: 400px;
-
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

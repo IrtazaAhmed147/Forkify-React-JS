@@ -13,7 +13,7 @@ const RecipeList = (props) => {
 
 
 
-
+    const [selectedRecipeId, setSelectedRecipeId] = useState(null);
     const [currentPage, setCurrentPage] = useState(props.currentPageNum)
     const recipesPerPage = 10;
 
@@ -44,8 +44,11 @@ const RecipeList = (props) => {
 
     const getKey = (id) => {
 
-        console.log(id)
+        setSelectedRecipeId(id)
+        console.log(selectedRecipeId)
         props.onClickKey(id)
+
+
     }
 
 
@@ -53,20 +56,21 @@ const RecipeList = (props) => {
 
 
     return (
+        <>
         <div className='list-box'>
             <div className="result-box my-2">
 
                 {currentRecipe.map((element) => {
+
                     return <div key={`${element.id}`}>
-
-
-
-
-                        <div className="result "    >
+                        <div className="result "   >
                             <Link to={`${element.id}`}>
 
 
-                                <div className="card" onClick={() => getKey(element.id)} style={{ flexDirection: 'row', alignItems: 'center', height: '100px' }}>
+                                <div className="card" onClick={() => getKey(element.id)} style={{
+                                    flexDirection: 'row', alignItems: 'center', height: '100px', backgroundColor: selectedRecipeId === element.id ? 'rgb(249, 245, 243)' : 'white',
+                                    transition: 'background-color 0.3s'
+                                }}>
                                     <img className='item-img' style={{ height: '50px' }} src={element.image_url} alt="" />
                                     <div className="card-body">
                                         <h5 className="card-title">{element.title ? element.title : ""}</h5>
@@ -82,16 +86,6 @@ const RecipeList = (props) => {
 
                 })}
 
-
-
-
-
-
-
-
-
-
-
                 <div className="btn-box mt-3 mx-3" style={{ display: 'flex', justifyContent: 'space-between' }}>
 
                     {currentPage > 1 && (
@@ -105,8 +99,15 @@ const RecipeList = (props) => {
                     )}
                 </div>
 
+
+
             </div>
         </div>
+        <div className='copyrigth-box'>
+            <p>&copy; Copyright by <a target='blank' href="https://github.com/IrtazaAhmed147">Irtaza Ahmed</a>  </p>
+        </div>
+        </>
+
     )
 }
 

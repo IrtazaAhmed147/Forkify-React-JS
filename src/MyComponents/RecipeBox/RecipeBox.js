@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './RecipeBox.css'
 
 
@@ -7,6 +7,9 @@ const RecipeBox = (props) => {
 
   const specificRecipe = props.specificRecipe || {}; // Ensure specificRecipe is an object
   const specificIngredients = specificRecipe.ingredients || []; // Ensure ingredients is an array
+  const [text, setText] = useState(null)
+
+
 
 
 
@@ -56,7 +59,9 @@ const RecipeBox = (props) => {
 
         <p>This recipe was carefully designed and tested by <b> {specificRecipe.publisher} </b>. Please check out directions at their website.</p>
         <a target='blank' href={specificRecipe.source_url}>
-          <button className='btn btn-dark'>Direction &rarr;</button>
+          <button className='btn btn-dark' style={{
+               backgroundImage: 'linear-gradient(to right bottom, #6a6a6a, #000000)', border: 'none', borderRadius: '20px'
+          }}>Direction &rarr;</button>
         </a>
       </div>
 
