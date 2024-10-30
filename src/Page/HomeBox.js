@@ -1,5 +1,5 @@
 import React from 'react'
-import '../RecipeBox/RecipeBox.css'
+import '../CSS/RecipeBox.css'
 const HomeBox = () => {
   return (
     <div >
