@@ -3,7 +3,7 @@ import '../CSS/RecipeBox.css'
 const HomeBox = () => {
   return (
     <div >
-      <p className='Home-p' >Start by searching for a recipe or an ingredient. Have fun!</p>
+      <p className='Home-p' > <i class="fa-regular fa-face-smile icon-color"></i> Start by searching for a recipe or an ingredient. Have fun!</p>
     </div>
   )
 }

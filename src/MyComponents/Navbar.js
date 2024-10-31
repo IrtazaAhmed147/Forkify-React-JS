@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../CSS/Navbar.css'
 import logo from '../img/logo.09084f39.png'
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import { check, fetchApi, getValue } from '../Feature/ApiSlice';
+import { useDispatch } from 'react-redux';
+import { getValue } from '../Feature/ApiSlice';
+import Bookmark from './Bookmark';
 
 const Navbar = () => {
     
     const [input, setInput] = useState('')
-    // const resinput = useSelector(state=> state.api.input)
     const dispatch = useDispatch()
+    const [modal, setModal] = useState(false)
 
     
-    // useEffect(()=> {
-    //     dispatch(fetchApi())
-    //     console.log(resinput)
-    // },[dispatch, resinput])
 
 
     const handleSubmit =(e)=> {
         e.preventDefault()
         dispatch(getValue(input))
 
-        // console.log('adfasd')
     }
+     
+
 
     return (
         <>
@@ -46,16 +44,17 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/"><i className="fa-regular fa-note-sticky"></i> ADD RECIPE</a>
+                                <button className="nav-link active" aria-current="page" ><i className="fa-solid fa-pen-to-square icon-color"></i> ADD RECIPE</button>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" href="/"><i className="fa-regular fa-bookmark"></i> BOOKMARKS</a>
+                                <button className="nav-link active" onMouseEnter={()=> setModal(true)} onMouseLeave={()=> setModal(false)} ><i className="fa-regular fa-bookmark icon-color"></i> BOOKMARKS</button>
                             </li>
 
 
                         </ul>
                     </div>
                 </div>
+                {modal && <Bookmark/>}
             </nav>
         </>
     )

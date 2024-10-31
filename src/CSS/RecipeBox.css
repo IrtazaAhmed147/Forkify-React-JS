@@ -52,6 +52,7 @@
     background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
     border-radius: 50%;
     border: none;
+    outline: none;
     cursor: pointer;
     height: 4.5rem;
     width: 4.5rem;
@@ -106,4 +107,13 @@
     text-align: center;
     margin-top: 3rem;
 
+}
+
+
+.fa-check{
+    margin-right: 5px;
+
+}
+.icon-color{
+    color: #f38e82;
 }
