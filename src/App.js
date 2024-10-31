@@ -5,6 +5,7 @@ import Navbar from './MyComponents/Navbar'
 import HomeBox from './Page/HomeBox'
 import RecipeBox from './MyComponents/RecipeBox'
 import RecipeList from './MyComponents/RecipeList'
+import Spinner from './MyComponents/Spinner'
 
 import {
   BrowserRouter as Router,
@@ -12,6 +13,7 @@ import {
   Route,
   useParams
 } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
 function App() {
@@ -19,8 +21,9 @@ function App() {
 
 
 
+    const loader = useSelector(state=> state.api.loading)
 
-
+    console.log(loader)
 
   return (
     <div>
@@ -36,7 +39,7 @@ function App() {
             <div className="recipeListPortion">
 
                <RecipeList  />
-               {/* <Spinner /> */}
+               {loader && <Spinner />}
 
 
             </div>
@@ -47,7 +50,7 @@ function App() {
               <Routes>
 
                 <Route exact path="/" element={<HomeBox />} ></Route>
-                <Route exact path="/recipe" element={<RecipeBox  />}></Route>
+                <Route exact path="/recipe/:recipeId" element={<RecipeBox  />}></Route>
 
               </Routes>
 
