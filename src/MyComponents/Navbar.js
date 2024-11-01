@@ -18,7 +18,7 @@ const Navbar = () => {
     const handleSubmit =(e)=> {
         e.preventDefault()
         dispatch(getValue(input))
-        setInput('')
+        
     }
      
 

@@ -26,6 +26,7 @@ export const getApi = createSlice({
                 state.page = 1
                 state.loading = true
             }
+            // state.input = ''
 
         },
         handleNextEvent: (state) => {
