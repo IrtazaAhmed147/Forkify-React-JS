@@ -5,12 +5,12 @@ import Card from './Card'
 const Bookmark = () => {
   const bookMark = useSelector(state => state.api.bookmark)
   const selectedId = useSelector(state => state.api.selectedId);
-  
+
   const [selected, setSelected] = useState(null)
   const loader = useSelector(state => state.api.loading)
 
-  
-  
+
+
 
 
 
@@ -33,27 +33,9 @@ const Bookmark = () => {
       {bookMark && bookMark.map((item) => {
         return <div style={{ marginBottom: '2px' }} key={item.id}>
 
-          <Card item={item} loader={loader} selectedId={selectedId} setSelected={setSelected} />
-
-          {/* <div className="result "   >
-            <div onClick={() => handleView(item.id)}>
+          <Card item={item} loader={loader} selectedId={selectedId} setSelected={setSelected} selected={selected} />
 
 
-              <div className="card" style={{
-                // display: loader ? 'none' : 'flex',
-                // backgroundColor: 'rgb(249, 245, 243)'
-                backgroundColor: selected === item.id ? 'rgb(249, 245, 243)' : '#fff'
-              }}>
-                <img className='item-img' src={item.image_url} style={{ height: '50px' }} alt="" />
-                <div className="card-body">
-                  <h5 className="card-title">{item.title}</h5>
-                  <p className="card-text">{item.publisher}</p>
-
-                </div>
-              </div>
-
-            </div>
-          </div> */}
         </div>
       })}
     </div>

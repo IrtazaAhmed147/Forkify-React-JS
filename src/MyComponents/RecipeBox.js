@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 import '../CSS/RecipeBox.css'
 import { useParams } from 'react-router-dom';
@@ -24,7 +24,7 @@ const RecipeBox = () => {
   }, [dispatch, recipeId])
 
   const handleBookmark = () => {
-        dispatch(setbookmark(recipeItems))
+    dispatch(setbookmark(recipeItems))
   }
 
 
@@ -32,7 +32,7 @@ const RecipeBox = () => {
     return <Spinner />
   }
   if (!recipeItems) {
-    return <Spinner/>
+    return <Spinner />
   }
   return (
 
@@ -54,7 +54,7 @@ const RecipeBox = () => {
         <button className="bookmark-icon" onClick={() => handleBookmark()}>
           {isBookmarked ? <i className="fa-solid fa-bookmark"></i> : <i className="fa-regular fa-bookmark"></i>}
 
-          </button>
+        </button>
       </div>
 
       <div className="recipe-ingredients">

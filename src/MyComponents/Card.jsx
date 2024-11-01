@@ -1,14 +1,12 @@
-import React from 'react'   
+import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { loadBar, setSelectedId } from '../Feature/ApiSlice';
 const Card = (props) => {
-    
-    // const [selected, setSelected] = useState(null)
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    
-    // const loader = useSelector(state => state.api.loading)
+
 
     const handleView = (id) => {
 
@@ -17,7 +15,6 @@ const Card = (props) => {
             console.log('asdf')
             navigate(`/recipe/${id}`)
             dispatch(loadBar())
-            // setSelected(id)
             dispatch(setSelectedId(id));
             props.setSelected(id);
 

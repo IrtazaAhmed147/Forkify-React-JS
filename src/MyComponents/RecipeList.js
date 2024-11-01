@@ -21,11 +21,8 @@ const RecipeList = () => {
     const [finalVal, setFinalVal] = useState(10)
     const [selected, setSelected] = useState(null)
     const selectedId = useSelector(state => state.api.selectedId);
-    // const loader = useSelector(state=> state.api.loading)
 
     const page = useSelector(state => state.api.page)
-    // const [isButton , setIsButton] = useState(false)
-    // const navigate = useNavigate()
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -33,7 +30,6 @@ const RecipeList = () => {
         dispatch(fetchApi(input))
 
 
-        // console.log(input)
         if (page === 1) {
 
             setInitialVal(0)
@@ -63,14 +59,6 @@ const RecipeList = () => {
     }
 
 
-    // const handleView = (id) => {
-    //     navigate(`/recipe/${id}`)
-
-
-    //     dispatch(loadBar())
-    //     setSelected(id)
-
-    // }
 
     if (loader) return (<Spinner />)
 
@@ -92,26 +80,9 @@ const RecipeList = () => {
                             return <div key={item.id} >
 
 
-                                <Card item={item} loader={loader} selectedId={selectedId} setSelected={setSelected}/>
-
-                                {/* <div className="result "   >
-                                    <div onClick={() => handleView(item.id)}>
+                                <Card item={item} loader={loader} selectedId={selectedId} setSelected={setSelected} selected={selected} />
 
 
-                                        <div className="card" style={{
-                                            display: loader ? 'none' : 'flex',
-                                            backgroundColor: selected === item.id ? 'rgb(249, 245, 243)' : '#fff'
-                                        }}>
-                                            <img className='item-img' src={item.image_url} style={{ height: '50px' }} alt="" />
-                                            <div className="card-body">
-                                                <h5 className="card-title">{item.title}</h5>
-                                                <p className="card-text">{item.publisher}</p>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div> */}
                             </div>
                         })}
 
