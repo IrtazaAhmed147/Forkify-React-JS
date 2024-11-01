@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../CSS/RecipeList.css'
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchApi, handleNextEvent, loadBar } from '../Feature/ApiSlice';
+import { fetchApi, handleNextEvent } from '../Feature/ApiSlice';
 import Spinner from './Spinner';
+import Card from './Card';
 
 
 
@@ -20,11 +20,12 @@ const RecipeList = () => {
     const [initialVal, setInitialVal] = useState(0)
     const [finalVal, setFinalVal] = useState(10)
     const [selected, setSelected] = useState(null)
+    const selectedId = useSelector(state => state.api.selectedId);
     // const loader = useSelector(state=> state.api.loading)
 
     const page = useSelector(state => state.api.page)
     // const [isButton , setIsButton] = useState(false)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -62,14 +63,14 @@ const RecipeList = () => {
     }
 
 
-    const handleView = (id) => {
-        navigate(`/recipe/${id}`)
+    // const handleView = (id) => {
+    //     navigate(`/recipe/${id}`)
 
-        
-        dispatch(loadBar())
-        setSelected(id)
 
-    }
+    //     dispatch(loadBar())
+    //     setSelected(id)
+
+    // }
 
     if (loader) return (<Spinner />)
 
@@ -80,17 +81,20 @@ const RecipeList = () => {
 
                     <div >
                         {input && items.length === 0 ?
-                        <div className='notFoundBox'>
+                            <div className='notFoundBox'>
 
-                         <p className='itemNotFound'><i className="fa-solid fa-triangle-exclamation"></i> No recipes found for your query! Please try again;</p>
-                        </div>
-                          : ''}
+                                <p className='itemNotFound'><i className="fa-solid fa-triangle-exclamation"></i> No recipes found for your query! Please try again;</p>
+                            </div>
+                            : ''}
 
 
                         {items.slice(initialVal, finalVal).map((item) => {
                             return <div key={item.id} >
 
-                                <div className="result "   >
+
+                                <Card item={item} loader={loader} selectedId={selectedId} setSelected={setSelected}/>
+
+                                {/* <div className="result "   >
                                     <div onClick={() => handleView(item.id)}>
 
 
@@ -107,7 +111,7 @@ const RecipeList = () => {
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         })}
 

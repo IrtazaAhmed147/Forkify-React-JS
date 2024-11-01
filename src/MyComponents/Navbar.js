@@ -18,7 +18,7 @@ const Navbar = () => {
     const handleSubmit =(e)=> {
         e.preventDefault()
         dispatch(getValue(input))
-
+        setInput('')
     }
      
 
@@ -54,7 +54,14 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-                {modal && <Bookmark/>}
+                {modal && (
+                    <div
+                    onMouseEnter={()=> setModal(true)}
+                    onMouseLeave={()=> setModal(false)}
+                    >
+                        <Bookmark />
+                    </div>
+                )}
             </nav>
         </>
     )

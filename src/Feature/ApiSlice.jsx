@@ -11,6 +11,7 @@ export const getApi = createSlice({
         specificRecipe: '',
         loader: false,
         bookmark: [],
+        selectedId: null,
     },
     reducers: {
         setItems: (state, action) => {
@@ -50,12 +51,15 @@ export const getApi = createSlice({
                 state.bookmark.push(action.payload);
             }
 
-        }
+        },
+        setSelectedId: (state, action) => {  // Add setSelectedId reducer
+            state.selectedId = action.payload;
+        },
     }
 })
 
 
-export const { setItems, item, getValue, input, results, handleNextEvent, getRecipeId, specificRecipe, loadBar, loader, setbookmark, bookmark } = getApi.actions
+export const { setItems, item, getValue, input, results, handleNextEvent, getRecipeId, specificRecipe, loadBar, loader, setbookmark, bookmark, setSelectedId } = getApi.actions
 export default getApi.reducer
 
 
